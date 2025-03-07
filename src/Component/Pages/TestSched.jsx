@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../Styles/TestSched.css"; // Import the CSS file
 import { useNavigate } from "react-router-dom";
 
@@ -6,18 +6,27 @@ const TestSched = () => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const navigate = useNavigate();
-  const handleBeginTest = (e) => {
+
+  // Autofill current date and time on component mount
+  useEffect(() => {
+    const currentDate = new Date();
+    setDate(currentDate.toISOString().split("T")[0]); // YYYY-MM-DD format
+    setTime(currentDate.toTimeString().slice(0, 5)); // HH:MM format
+  }, []);
+
+  const handleSaveTestDetails = (e) => {
     e.preventDefault();
-    alert("Test scheduled successfully!");
-     navigate("/test");
+    console.log(`Test taken on ${date} at ${time}`);
+    // Navigate or store the details as needed
+    navigate("/test");
   };
 
   return (
     <div className="test-sched-container">
-      <h2>Schedule Your Test</h2>
+      <h2>Record Your Test</h2>
 
       <div className="test-inputs">
-        <label>Date:</label>
+        <label>Test Date:</label>
         <input
           type="date"
           value={date}
@@ -25,7 +34,7 @@ const TestSched = () => {
           required
         />
 
-        <label>Time:</label>
+        <label>Test Time:</label>
         <input
           type="time"
           value={time}
@@ -36,27 +45,11 @@ const TestSched = () => {
 
       <p className="duration-text">Duration: 1 hour (60 minutes)</p>
 
-      <button className="begin-test-btn" onClick={handleBeginTest}>
-        Begin Test
+      <button className="begin-test-btn" onClick={handleSaveTestDetails}>
+        Save Test Details
       </button>
     </div>
   );
 };
 
 export default TestSched;
-// import React from "react";
-// import { useNavigate } from "react-router-dom";
-
-// const TestSched = () => {
-//   const navigate = useNavigate();
-
-//   return (
-//     <div className="start-container">
-//       <h2>Online Test</h2>
-//       <p>Duration: 1 Hour (60 Minutes)</p>
-//       <button onClick={() => navigate("/test")}>Begin Test</button>
-//     </div>
-//   );
-// };
-
-// export default TestSched;
