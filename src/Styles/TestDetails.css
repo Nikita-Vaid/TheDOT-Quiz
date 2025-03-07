@@ -1,63 +1,96 @@
-/* Global Container */
+/* Make test-container responsive */
 .test-container {
-    font-family: "Roboto", sans-serif;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    padding: 5rem;
-    gap: 20px;
-  }
-  
-  /* Section Titles */
-  .test-section h2,
-  .eligibility-section h2 {
-    font-family: "Roboto", sans-serif;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: #222;
-  }
-  
-  /* Test Box */
-  .test-box {
-    background: #f8fbff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
-  }
-  
-  /* Test Item */
-  .test-item {
-    display: flex;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 5rem;
+  gap: 20px;
+  flex-wrap: wrap; /* Allows items to wrap in smaller screens */
+}
+
+/* Test Box - Adjust for smaller screens */
+.test-box {
+  width: 100%;
+  max-width: 400px; /* Prevents it from getting too large */
+}
+
+
+
+.eligibility-section, .test-section{
+  /* background-color: white; */
+
+}
+
+/* Scholarship Banner - Responsive */
+.scholarship-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #69bcfa;
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+/* Adjust text and image */
+.scholarship-banner p {
+  font-size: 1.2rem;
+  text-align: center;
+  flex: 1;
+}
+
+/* Image Responsiveness */
+.calendar-image {
+  width: 80px;
+  height: auto;
+  margin-left: 10px;
+}
+
+/* Media Queries for Responsive Adjustments */
+@media (max-width: 1024px) {
+  .test-container {
+    flex-direction: column;
     align-items: center;
-    gap: 12px;
-    padding: 12px 0;
+    padding: 3rem;
   }
-  
-  /* Icon Styles */
-  .icon {
-    font-size: 24px;
-    color: #009cde;
+}
+
+@media (max-width: 768px) {
+  .test-container {
+    padding: 2rem;
   }
-  
-  /* Text Styles */
-  h4 {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 0;
+
+  .scholarship-banner {
+    flex-direction: column; /* Stack text and image */
+    text-align: center;
   }
-  
-  p {
-    font-size: 14px;
-    color: #555;
-    margin: 5px 0 0;
+
+  .calendar-image {
+    width: 60px;
   }
-  
-  /* Horizontal Line */
-  hr {
-    border: none;
-    border-top: 1px solid #ddd;
-    margin: 5px 0;
+}
+
+@media (max-width: 480px) {
+  .test-container {
+    padding: 1.5rem;
   }
-  
+
+  .test-box {
+    width: 90%;
+  }
+
+  .scholarship-banner {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .calendar-image {
+    width: 50px;
+  }
+}
