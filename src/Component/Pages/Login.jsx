@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import DIAST from "../../assets/DTSETEST.png";
 import studentimage from "../../assets/student-image2.png";
 import "../../Styles/Login.css";
+import TestDetails from "./TestDetails";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -14,37 +15,42 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      {/* Wrapper for Left (Images) and Right (Form) */}
-      <div className="two-main">
-        {/* Left Side - Images */}
-        <div className="left-content">
-          <div className="DIAST-image">
-            <img src={DIAST} alt="Diast" />
+    <div>
+      <div className="login-container">
+        {/* Wrapper for Left (Images) and Right (Form) */}
+        <div className="two-main">
+          {/* Left Side - Images */}
+          <div className="left-content">
+            <div className="DIAST-image">
+              <img src={DIAST} alt="Diast" />
+            </div>
+            <div className="student-image">
+              <img src={studentimage} alt="students" />
+            </div>
           </div>
-          <div className="student-image">
-            <img src={studentimage} alt="students" />
-          </div>
-        </div>
 
-        {/* Right Side - Login Form */}
-        <div className="login-right">
-          <h2>Login to your dashboard</h2>
-          <form className="login-form" onSubmit={handleSubmit}>
-            <label>Roll Number</label>
-            <input type="text" placeholder="Enter your roll number" required />
+          {/* Right Side - Login Form */}
+          <div className="login-right">
+            <h2>Login to your dashboard</h2>
+            <form className="login-form" onSubmit={handleSubmit}>
+              <label>Roll Number</label>
+              <input type="text" placeholder="Enter your roll number" required />
 
-            <label>Password</label>
-            <input type="password" required />
+              <label>Password</label>
+              <input type="password" required />
 
-            {/* <a href="/" className="forgot-link">
+              {/* <a href="/" className="forgot-link">
               Forgot roll number/password?
             </a> */}
 
-            <button type="submit" className="login-btn">Login</button>
-          </form>
+              <button type="submit" className="login-btn">Login</button>
+            </form>
+          </div>
         </div>
       </div>
+      <TestDetails />
+
+
     </div>
   );
 };

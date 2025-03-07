@@ -16,8 +16,11 @@ const TestSched = () => {
 
   const handleSaveTestDetails = (e) => {
     e.preventDefault();
+
+    // Store in **Session Storage** instead of Local Storage
+    sessionStorage.setItem("testDetails", JSON.stringify({ date, time }));
+
     console.log(`Test taken on ${date} at ${time}`);
-    // Navigate or store the details as needed
     navigate("/test");
   };
 
